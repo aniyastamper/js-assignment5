@@ -39,5 +39,10 @@ const items = [
 // Omit the 'age' element
 
 const person = items // append your code here
+	.filter(object => object[0] !== 'age') //This will Filter out our age element 
+	.reduce((object, [key, value]) => { //From here we are taking out each object  and identifying each key and its matchiing value with the sigular arrays
+		object[key] = value;    // here We set our {OBJECT} to the key  and made that key associated to the value EX. { firstname : Luke}
+		return object;  //will return the created object as a whole 
+	},{})
 
 test("Problem 4", person)

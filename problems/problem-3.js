@@ -25,10 +25,18 @@ or you can run all by running `node run-all`.
 
 const { test } = require('../tester')
 
-const isEven = number => number % 2 === 0 // returns true if the number is even
+const isEven = number => number % 2 === 0 // returns true if the number is even //This Function is called in our Mapping to determine how and which number is even or odd and turns it into a string
 
 const numbers = [ -10, -5, 0, 5, 10, 8, -2 ]
 
 const numberStrings = numbers // append your array methods here
+.filter(number => number > 0) //filter out 0 and neg numbers
+.map( number => `${number} is ${isEven(number) ? 'even' : 'odd'}`) //Here we need to convert if the Number from the aray is odd or even and we are deconstructing the value into the variable
+.sort((a,b) =>{ //a,b are compare variables a coming first b coming imd after this sorts through each value that passes through our first to fuctions
+	const numA = parseInt(a.split(' ')[0])
+	const numB = parseInt(b.split(' ')[0])
+	return numA - numB //Here we are compare the A and B number strings and determing which number should come before eachother in the array
+						//Ensuring we maintain the SMALLEST to LARGEST
+})
 
 test("Problem 3", numberStrings)
